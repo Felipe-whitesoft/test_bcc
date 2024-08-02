@@ -1,0 +1,25 @@
+parameters:
+- name: environment 
+  type: string
+
+
+stages:
+  - stage: 'Approval_${{parameters.environment}}'
+    displayName: 'Approval for ${{parameters.environment}}'
+    variables:
+    - name: instructions
+      value: 'My Services Forms API ${{parameters.environment}}: Request for Approval: Deployment of Build to ${{parameters.environment}} Environment.'
+    jobs:
+      - job: waitForValidation
+        displayName: Wait for external validation  
+        pool: server
+        timeoutInMinutes: 4320 # job times out in 3 days
+        condition: succeeded()
+        steps:   
+        - task: ManualValidation@0
+          timeoutInMinutes: 1440 # task times out in 1 day
+          inputs:
+              notifyUsers: |
+                  $(notifyUsers)
+              instructions: $(instructions)
+              onTimeout: 'reject'

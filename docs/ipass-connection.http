@@ -1,0 +1,39 @@
+@hostname=localhost
+@port=5225
+@formId=rptit_abandoned_vehicle
+@customer_id=1007669253
+@iPass_Token=eyJhbGciOiJSUzI1NiIsImtpZCI6InZZamoyWHlnVW52SHljTlJBWEdOQVZRR09rQjkxbnljZVpYdXB1aGpNa2ciLCJ0eXAiOiJKV1QifQ.eyJleHAiOjE3MjE3MTk1MzMsIm5iZiI6MTcyMTcxODkzMywidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly91YXQtYXV0aC5icmlzYmFuZS5xbGQuZ292LmF1L3RmcC9kZGM0YmJjOS02ZTI1LTQ0MDgtYjJjZS03MmFhYjZjNDlkNjMvYjJjXzFhX3NpZ251cF9zaWduaW5fYWNjb3VudF9tc2IvdjIuMC8iLCJzdWIiOiI1Mzc3MzZkMC02M2RlLTQwMTMtYjBlZi1mNzNkNjc4MjNiYjAiLCJhdWQiOiJlNzA0Y2Y4ZS0yMWRmLTRmNWMtYmY1Yy1hYjA0MDk5MWQwOWIiLCJub25jZSI6IjAxOTBkZTcxLWU5MzQtNzA3My05MTFkLWVkZmRmYWQ0NTRmZSIsImlhdCI6MTcyMTcxODkzMywiYXV0aF90aW1lIjoxNzIxNzE4OTMyLCJlbWFpbF9sb2dpbiI6ImJyZWV6ZS5hd3MuMkBnbWFpbC5jb20iLCJnaXZlbl9uYW1lIjoiQnJlZXplMiIsImZhbWlseV9uYW1lIjoiQXBwIiwiY29ycmVsYXRpb25JZCI6ImQwNTk2ZjM0LWJlOWItNGZjOC1iNzgyLTA0MTExNTY3NWE5YiIsImNpZCI6IjQwYmIzMGMyLWUxNDMtZWYxMS1hMzE2LTYwNDViZGU2M2I4OCIsImVtYWlsIjoiYnJlZXplLmF3cy4yQGdtYWlsLmNvbSIsInBob25lX251bWJlciI6Iis2MTQzNDcyOTg3MiIsIk9QVElNSVNFX0lkIjoiMTAwNDA5MTI3MCIsIk9GUE1fc2Vzc2lvbl90b2tlbiI6ImM5YTVlM2M4LTlkZjUtNDk3Yy1hZTNmLWIyMWFmOGQ1NzhiMyJ9.BadulaXEb0DPpb1WGwBiraVuM0GO-qel87TBcblhJk6dpeY_lUDW-m7B5ETESM6YN-i9iWGxceaTEDXMb7qJ18_TKxBMi68A5152Ee-ENMbfNvweJWaLYMLsNMafZXhiinswoOyonLmGgr5zMx7y-ZkDwXGPA3-KbZeAAb4iIbzw8JY-sMf1RMehKBkAdqFbLITzZUS4JXzqTbofwWyWK66VN7A8MyLtmQS_qgjJWdnzNfrySOJheZ7MCUO80LPZYRhqEpwGnbQ1gZB2DW5ubG3ZDbrfB1QAY2WF74nPBLsPLw-fLUv8rHnuMiuX1r55PZSBf-JFruTZa3o3pS4vng
+###
+ GET https://{{hostname}}:{{port}}/health
+
+### Get iPaaS Access Token
+
+POST https://login.microsoftonline.com/a47f8d5a-a5f2-4813-a71a-f0d70679e236/oauth2/v2.0/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=client_credentials
+&client_id=cfe1a829-8121-4881-8eaf-38fd7a2cf7db
+&client_secret=cXv8Q~kXFGaDWvpJ_iDQL5gGR-v1S_60NR.fza~k
+&scope=api://8ecdc283-c295-4f41-bf6c-a7514e5cad3b/.default
+# extract access_token from response and assign the access_token to @iPass_Token
+
+### Get Customer token from iPaaS
+https://dev-ipaas-apm-01.azure-api.net/customer_forms/v1/token?customer_id={{customer_id}}
+Authorization: Bearer {{@iPass_Token}}
+
+### Get OFPM Forms Headers
+https://forms-dev-brisbanecc.squiz.cloud/form/resources
+
+### Get OFPM Forms by Form ID
+#@formId=rptit_abandoned_vehicle
+https://forms-dev-brisbanecc.squiz.cloud/form/widget/auto/{{formId}}
+
+
+### Get Forms template by form ID
+#@formId=rptit_abandoned_vehicle
+http://localhost:5225/v1/forms/template/{{formId}}
+
+
+### Get Forms template Settings by form ID
+#@formId=rptit_abandoned_vehicle
+http://localhost:5225/v1/settings/template/{{formId}}

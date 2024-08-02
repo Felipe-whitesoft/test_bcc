@@ -1,0 +1,19 @@
+steps:
+- task: AzurePowerShell@5
+  displayName: 'Add Agent IP to Web App Firewall'
+  inputs:
+    azureSubscription: $(azureSubscription)
+    ScriptType: 'InlineScript'
+    Inline: |
+      $agentIP = (Invoke-WebRequest -Uri "https://api.ipify.org").Content
+      $webAppName = "$(webAppName)"
+      $resourceGroupName = "$(resourceGroupName)"
+      
+      Add-AzWebAppAccessRestrictionRule `
+        -ResourceGroupName $resourceGroupName `
+        -WebAppName $webAppName `
+        -Name "Allow-Azure-DevOps-Agent" `
+        -Priority 100 `
+        -Action Allow `
+        -IpAddress "$agentIP/32"
+    azurePowerShellVersion: 'LatestVersion'

@@ -1,0 +1,20 @@
+trigger: none
+
+resources:
+  pipelines:
+  - pipeline: mysb-forms-api
+    source: mysb-forms-api-build # name of the pipeline source definition
+    project: MSB # project for the source pipeline
+    trigger:
+      branches:
+        include:
+          - main
+
+variables:
+- group: mysb-forms-api-development
+
+stages:
+- template: templates/deploy-stage.yaml
+  parameters:
+    environment: "Development"
+    group: mysb-forms-api-development

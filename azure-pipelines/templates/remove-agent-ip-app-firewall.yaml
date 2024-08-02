@@ -1,0 +1,16 @@
+steps:
+- task: AzurePowerShell@5
+  displayName: 'Remove Agent IP from Web App Firewall'
+  condition: always()
+  inputs:
+    azureSubscription: $(azureSubscription)
+    ScriptType: 'InlineScript'
+    Inline: |
+      $webAppName = "$(webAppName)"
+      $resourceGroupName = "$(resourceGroupName)"
+      
+      Remove-AzWebAppAccessRestrictionRule `
+        -ResourceGroupName $resourceGroupName `
+        -WebAppName $webAppName `
+        -Name "Allow-Azure-DevOps-Agent"
+    azurePowerShellVersion: 'LatestVersion'

@@ -1,0 +1,22 @@
+# build-test.yml
+steps:
+- task: UseDotNet@2
+  inputs:
+    version: "8.x"
+    includePreviewVersions: true
+
+- task: DotNetCoreCLI@2
+  displayName: "dotnet build"
+  inputs:
+    command: "build"
+    configuration: $(buildConfiguration)
+    projects: "**/*.csproj"
+
+- task: DotNetCoreCLI@2
+  displayName: "dotnet test"
+  inputs:
+    command: "test"
+    arguments: '--configuration $(BuildConfiguration) --collect "Code coverage"'
+    publishTestResults: true
+    projects: '**/*[Tt]ests.csproj'
+

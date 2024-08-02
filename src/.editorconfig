@@ -1,0 +1,19 @@
+root = true
+[*]
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+max_blank_lines = 1
+
+[*.cs]
+indent_style = space
+indent_size = 4
+charset = utf-8
+file_header_template = {Leslie}
+csharp_new_line_before_open_brace = methods_types_anonymous_methods_types_accessors
+csharp_new_line_between_query_expression_clauses = false
+max_blank_lines = 1
+dotnet_style_allow_multiple_blank_lines_experimental = false
+# Sort using and Import directives with System.* appearing first
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false

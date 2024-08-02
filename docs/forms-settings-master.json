@@ -1,0 +1,176 @@
+[
+  {
+    "category": "OFPM",
+    "formName": "Unmanaged (Abandoned) vehicle",
+    "formId": "rptit_abandoned_vehicle",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Barking dog complaint",
+    "formId": "rptit_barking_dog",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Bikeway maintenance",
+    "formId": "rptit_bikeway",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Change your address contact details",
+    "formId": "rptit_ch_contact_details",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Damaged kerb and channel (road gutters):",
+    "formId": "rptit_kerb_channel",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Development and other building work complaints",
+    "formId": "rptit_building_dev",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Erosion and sediment control issues",
+    "formId": "rptit_erosion",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Feral animal sightings",
+    "formId": "rptit_feral_animal",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Footpath maintenance",
+    "formId": "rptit_footpath_svc",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Graffiti removal",
+    "formId": "rptit_graffiti",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Grass cutting / weed removal",
+    "formId": "rptit_grass_weeds",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Illegal dumping",
+    "formId": "rptit_illegal_dumpings",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Interference with protected vegetation",
+    "formId": "rptit_interference_vegs",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Overgrown land, unsightly objects, hazardous vegetation and pest plants",
+    "formId": "rptit_overgrown_land",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Parks maintenance",
+    "formId": "rptit_park_maintance",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Rates balance enquiry",
+    "formId": "current_rates_balance",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Receiving your rates notice by email application",
+    "formId": "rates_cc11336",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Report a bin problem",
+    "formId": "waste_report_bin_problem",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Report missing, damaged or faded line markings",
+    "formId": "rptit_line_markings",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Report missing, damaged or faded traffic signs",
+    "formId": "rptit_traffic_signs",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Report potholes",
+    "formId": "rptit_potholes",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Report rubbish / debris on a road",
+    "formId": "rptit_rubbish_road",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Request a direct debit be applied to your rate account",
+    "formId": "rates_direct_debit_req",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Request for new line markings",
+    "formId": "rptit_new_line_marking",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Request road cleaning",
+    "formId": "rptit_road_cleansing",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Stormwater drains",
+    "formId": "rptit_stormwater",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Trail Bike riding in Council parks",
+    "formId": "rptit_trail_bike",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Tree maintenance",
+    "formId": "rptit_tree_svc",
+    "enabled": false
+  },
+  {
+    "category": "OFPM",
+    "formName": "Tree removal",
+    "formId": "rptit_tree_removal",
+    "enabled": false
+  }
+]

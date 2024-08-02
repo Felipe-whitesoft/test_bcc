@@ -1,0 +1,7 @@
+steps:
+- task: PublishCodeCoverageResults@1
+  displayName: "Publish code coverage report"
+  inputs:
+    codeCoverageTool: "Cobertura"
+    summaryFileLocation: "$(System.DefaultWorkingDirectory)/**/coverage.cobertura.xml"
+    ExcludeByFile: '**/*[Tt]ests.csproj'

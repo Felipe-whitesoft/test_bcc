@@ -1,0 +1,30 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - main
+    - release/qa/*
+
+  paths:
+    exclude:
+    - azure-pipelines/*
+
+variables:
+- name: major
+  value: 1
+- name: minor
+  value: 0
+- name: BUILD_NUMBER
+  value: $(major).$(minor)$(Rev:.r)
+
+name: $(major).$(minor)$(Rev:.r)
+
+pool:
+  vmImage: "ubuntu-latest"
+
+jobs:
+- job: BuildAndPublish
+  steps:
+  - template: templates/build-test.yml
+  - template: templates/coverage.yml
+  - template: templates/publish-artifact.yml

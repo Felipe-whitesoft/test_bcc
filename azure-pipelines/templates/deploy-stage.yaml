@@ -1,0 +1,21 @@
+parameters:
+- name: environment 
+  type: string
+- name: group
+  type: string
+
+stages:
+  - stage: '${{parameters.environment}}_stage' #Stage name cannot have spaces
+    displayName: 'Deploying to ${{parameters.environment}} Environment'
+    variables:
+      - group: ${{parameters.group}} #The name of a Variable group in Azure DevOps
+    pool:
+        vmImage: "ubuntu-latest"
+    jobs:
+      - job: '${{parameters.environment}}_job' #Job name cannot have spaces
+        condition: succeeded()
+        displayName: 'Deploying to ${{parameters.environment}} App Service' #Name displayed when viewing in Azure DevOps
+        steps:
+          - template: add-agent-ip-app-firewall.yaml
+          - template: deploy-app-task.yaml
+          - template: remove-agent-ip-app-firewall.yaml

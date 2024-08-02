@@ -1,0 +1,23 @@
+trigger: none
+
+resources:
+  pipelines:
+  - pipeline: mysb-forms-api
+    source: mysb-forms-api-build # name of the pipeline source definition
+    project: MSB # project for the source pipeline
+    trigger:
+      branches:
+        include:
+          - release/qa/*
+
+variables:
+- group: mysb-forms-api-qa
+
+stages:
+- template: templates/approval-release-task.yaml
+  parameters:
+    environment: "qa"
+- template: templates/deploy-stage.yaml
+  parameters:
+    environment: "qa"
+    group: mysb-forms-api-qa

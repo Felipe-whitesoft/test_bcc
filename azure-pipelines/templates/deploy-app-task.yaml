@@ -1,0 +1,39 @@
+steps:  
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'specific'
+    project: 'dca6aac3-87e3-439b-9118-8737869190de'
+    pipeline: '347'
+    specificBuildWithTriggering: true
+    buildVersionToDownload: 'latest'
+    downloadType: 'single'
+    artifactName: 'drop'
+    downloadPath: '$(Build.ArtifactStagingDirectory)'
+
+- task: FileTransform@1
+  inputs:
+    folderPath: '$(System.ArtifactsDirectory)/**/*.zip'
+    fileType: 'json'
+    targetFiles: 'appsettings.json'
+     
+- task: Bash@3
+  displayName: List All Artifacts
+  inputs:
+    targetType: 'inline'
+    script: |
+        ls  $(Build.ArtifactStagingDirectory)
+
+- task: AzureRmWebAppDeployment@4
+  displayName: 'Deploy Azure App Service'
+  inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription:  $(azureSubscription)
+      appType: 'webAppLinux'
+      WebAppName: $(webAppName)
+      resourceGroupName:  $(resourceGroupName)
+      packageForLinux: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+      excludeFilesFromAppDataFlag: true
+      RemoveAdditionalFilesFlag: true
+      ScriptType: 'Inline Script'
+      InlineScript: |
+        ls -lat
